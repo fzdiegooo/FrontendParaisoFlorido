@@ -1,0 +1,33 @@
+<div>
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" [(ngModel)]="filtroNombre" placeholder="Filtrar por nombre" />
+  
+      <label for="grado">Grado:</label>
+      <select [(ngModel)]="filtroGrado" (change)="aplicarFiltro()">
+        <option value="">Todos</option>
+        <option value="PRIMERO">1º</option>
+        <option value="SEGUNDO">2º</option>
+        <option value="TERCERO">3º</option>
+        <option value="CUARTO">4º</option>
+        <option value="QUINTO">5º</option>
+      </select>
+
+      <label for="seccion">Seccion:</label>
+      <select [(ngModel)]="filtroSeccion" (change)="aplicarFiltro()">
+        <option value="">Todos</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+      </select>
+    </div>
+
+
+  <app-table
+  [titulo]="title"
+  [nombreColumns]="nombreColumnas"
+  [columns]="columnas"
+  [data]="alumnos"
+  ></app-table>
+  
