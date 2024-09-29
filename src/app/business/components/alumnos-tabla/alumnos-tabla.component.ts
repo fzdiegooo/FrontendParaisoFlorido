@@ -3,25 +3,26 @@ import { FormsModule } from '@angular/forms';
 import { Alumno } from '../../../shared/models/Alumno';
 import { AlumnosService } from '../../../core/services/alumnos.service';
 import TableComponent from '../../../shared/components/table/table.component';
+import { SelectComponent } from "../../../shared/components/select/select.component";
 
 @Component({
   selector: 'app-alumnos-tabla',
   standalone: true,
-  imports: [FormsModule,TableComponent],
+  imports: [FormsModule, TableComponent, SelectComponent],
   templateUrl: './alumnos-tabla.component.html',
   styleUrl: './alumnos-tabla.component.css'
 })
 export default class AlumnosTablaComponent implements OnInit {
   title:string = 'Alumnos';
-  columnas:string[]=["id","nombre","gradoId", "seccion.nombre"]
+  columnas:string[]=["nombre","apellido","documento","edad","gradoId", "seccion.nombre"]
   alumnos: Alumno[] = [];
   filtroNombre: string = '';
   filtroGrado: string = '';
   filtroSeccion: string = '';
 
   nombreColumnas = {
-    'id': 'Id',
-    'nombre': 'Nombre Completo',
+    'nombre': 'Nombre',
+    'apellido':'Apellido',
     'gradoId': 'Grado',
     'edad': 'Edad',
     'grado.nombre': 'Grado',

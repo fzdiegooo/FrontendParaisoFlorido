@@ -1,2 +1,14 @@
-<app-alumnos-tabla/>
-<app-registro-asistencia/>
+<div class="text-gray-800 font-inter flex">
+  @if (booleano) {
+    <app-sidebar [sidebarVisible]="booleano" />
+  }
+
+  <main class=" bg-gray-200 h-screen w-screen flex flex-col">
+    <app-navbar (boolean)="recibirBool($event)" />
+    <div class="p-6">
+      <router-outlet/>
+    </div>
+
+  </main>
+</div>
+

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import { AsistenciaService } from '../../../core/services/asistencia.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-asistencia',
@@ -9,9 +10,10 @@ import { AsistenciaService } from '../../../core/services/asistencia.service';
   templateUrl: './registro-asistencia.component.html',
   styleUrl: './registro-asistencia.component.css'
 })
-export class RegistroAsistenciaComponent implements OnInit, OnDestroy  {
+export default class RegistroAsistenciaComponent implements OnInit, OnDestroy  {
   html5QrCodeScanner: Html5QrcodeScanner | null = null;
-  
+  isActive = true;
+
   constructor(private asistenciaService: AsistenciaService){}
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class RegistroAsistenciaComponent implements OnInit, OnDestroy  {
 
   onScanSuccess(decodedText: string, decodedResult: any) {
     this.registrarAsistencia(decodedText);
+    
     console.log(`Código QR detectado: ${decodedText}`);
     // Puedes manejar el resultado aquí
     // Por ejemplo, si deseas detener el escáner después de la primera detección:
@@ -49,19 +52,46 @@ export class RegistroAsistenciaComponent implements OnInit, OnDestroy  {
   }
 
   registrarAsistencia(id: string){
+    this.html5QrCodeScanner?.pause();
     this.asistenciaService.registrarAsistencia(id).subscribe(
-      {
-        next:(response)=>{
-          console.log("Asistencia registrada con exito: ", response);
-          
-        },
-        error:(error)=>{
-          console.log("Error: ",error);
-          
-        }
+      (response) => {
+        this.playSound();
+        Swal.fire({
+          icon: 'success',
+          title: 'Asistencia Registrada',
+          text: "Confirmar para continuar",
+          confirmButtonText: "Listo"
+        }).then((result)=>{
+          if(result.isConfirmed){
+            this.html5QrCodeScanner?.resume();
+            this.isActive = true;
+          }
+        });
+      },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: error.error.message,
+          confirmButtonText: "Aceptar"
+        }).then((result)=>{
+          if(result.isConfirmed){
+            this.html5QrCodeScanner?.resume();
+            this.isActive = true;
+          }
+        });
+      },
+    );
+  }
 
-      }
-    )
+  playSound(): void{
+    let audio = new Audio();
+    audio.src = "sonido-escaner.mp3"
+    console.log("funciona1");
+    
+    audio.load();
+    console.log("funciona1");
+    audio.play();
+    console.log("funciona1");
   }
 
 }

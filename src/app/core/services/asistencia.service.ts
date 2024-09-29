@@ -1,16 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Asistencia } from '../../shared/models/Asistencia';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AsistenciaService {
-  private url= "http://localhost:3000/api/asistencia"
+  private url= environment.apiUrl+"/api/asistencia"
   constructor(private http: HttpClient) { }
 
-  getAsistencias(){
-    return this.http.get<Asistencia[]>(this.url)
+  getAsistencias(filtroFecha: string = ""):Observable<Asistencia[]>{
+    let params: any = {};
+    if(filtroFecha) params.fecha = filtroFecha;
+
+    return this.http.get<Asistencia[]>(this.url,{params})
   }
 
   registrarAsistencia(id: string){

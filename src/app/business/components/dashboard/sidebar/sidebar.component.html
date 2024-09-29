@@ -1,0 +1,75 @@
+<div [ngClass]="sidebarVisible ? 'block' : 'hidden' " class=" sm:block">
+  <div
+    class=" w-64 h-screen bg-[#f8f4f3] p-4 z-50 transition-transform"
+  >
+    <a href="#" class="flex items-center pb-4 ">
+      <img src="Logo-colegio.png" alt="">
+    </a>
+    <ul class="mt-4">
+      
+      <li class="mb-1 group">
+        <a
+          routerLink="/dashboard/panel-administrador" 
+          routerLinkActive="bg-red-800 text-white"
+          class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
+        >
+          <i class="ri-home-2-line mr-3 text-lg"></i>
+          <span class="text-sm">Dashboard</span>
+        </a>
+      </li>
+      <li class="mb-1 group">
+        <a
+          routerLink="/dashboard/lista-alumnos" 
+          routerLinkActive="bg-red-800 text-white"
+          class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle"
+        >
+          <i class="bx bx-user mr-3 text-lg"></i>
+          <span class="text-sm">Lista Alumnos</span>
+        </a>
+      </li>
+      <li class="mb-1 group">
+        <a
+          routerLink="/dashboard/lista-asistencias" 
+          routerLinkActive="bg-red-800 text-white"
+          class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
+        >
+          <i class="bx bx-list-ul mr-3 text-lg"></i>
+          <span class="text-sm">Lista Asistencias</span>
+        </a>
+      </li>
+
+      <li class="mb-1 group">
+        <a
+          routerLink="/dashboard/registrar-asistencias" 
+          routerLinkActive="bg-red-800 text-white"
+          class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-dropdown-toggle"
+        >
+          <i class="bx bxs-user-check mr-3 text-lg"></i>
+          <span class="text-sm">Registrar Asistencias</span>
+        </a>
+        
+      </li>
+      <li class="mb-1 group">
+        <a
+          href=""
+          class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
+        >
+          <i class="bx bx-archive mr-3 text-lg"></i>
+          <span class="text-sm">Archive</span>
+        </a>
+      </li>
+      <span class="text-gray-400 font-bold">ADMINISTRADOR</span>
+      <li class="mb-1 group">
+        <a
+          href=""
+          class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
+        >
+          <i class="bx bx-user-plus mr-3 text-2xl"></i>
+          <span class="text-sm">Crear Usuario</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+</div>
