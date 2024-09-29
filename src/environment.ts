@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl: "backendparaisoflorido-production.up.railway.app"
+    apiUrl: "http://backendparaisoflorido-production.up.railway.app"
 }
