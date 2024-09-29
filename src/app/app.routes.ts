@@ -6,7 +6,6 @@ export const routes: Routes = [
     {
         path:"",
         loadComponent: ()=> import("./shared/components/layout/layout.component"),
-        canActivate: [authGuard],
         children:[
             {
                 path:"inicio",
@@ -39,6 +38,7 @@ export const routes: Routes = [
     {
         path: "dashboard",
         loadComponent: ()=> import("./business/components/dashboard/dashboard.component"),
+        canActivate: [authGuard],
         children:[
             {
                 path: "lista-alumnos",
