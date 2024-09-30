@@ -14,7 +14,9 @@ export default class RegistroAsistenciaComponent implements OnInit, OnDestroy  {
   html5QrCodeScanner: Html5QrcodeScanner | null = null;
   isActive = true;
 
-  constructor(private asistenciaService: AsistenciaService){}
+  constructor(private asistenciaService: AsistenciaService){
+    this.customizarTextos();
+  }
 
   ngOnInit(): void {
     // Inicializa el escáner QR en el inicio del componente
@@ -28,6 +30,8 @@ export default class RegistroAsistenciaComponent implements OnInit, OnDestroy  {
       this.onScanSuccess.bind(this), 
       this.onScanFailure.bind(this)
     );
+
+    this.customizarTextos();
   }
 
   ngOnDestroy(): void {
@@ -92,6 +96,14 @@ export default class RegistroAsistenciaComponent implements OnInit, OnDestroy  {
     console.log("funciona1");
     audio.play();
     console.log("funciona1");
+  }
+
+  customizarTextos(): void{
+    const btnComenzar = document.getElementById("html5-qrcode-button-camera-start");
+    const btnCerrar = document.getElementById("html5-qrcode-button-camera-stop");
+
+    if (btnComenzar) btnComenzar.innerHTML = "Iniciar Escaneo"
+
   }
 
 }
