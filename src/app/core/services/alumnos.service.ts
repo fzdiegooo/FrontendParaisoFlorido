@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Alumno } from '../../shared/models/Alumno';
+import { Alumno, DetalleAlumno } from '../../shared/models/Alumno';
 import { environment } from '../../../environment';
 
 @Injectable({
@@ -19,4 +19,9 @@ export class AlumnosService {
 
     return this.httpClient.get<Alumno[]>(this.url,{params})
   }
+
+  getAlumnosById(id:string=''):Observable<DetalleAlumno>{
+    return this.httpClient.get<DetalleAlumno>(`${this.url}/${id}`)
+  }
+
 }

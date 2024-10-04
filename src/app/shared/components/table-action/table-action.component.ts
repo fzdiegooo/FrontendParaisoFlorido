@@ -1,16 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Accion } from '../../models/Tabla';
 
 @Component({
-  selector: 'app-table',
+  selector: 'app-table-action',
   standalone: true,
   imports: [],
-  templateUrl: './table.component.html',
-  styleUrl: './table.component.css'
+  templateUrl: './table-action.component.html',
+  styleUrl: './table-action.component.css'
 })
-export default class TableComponent implements OnInit {
-  ngOnInit(): void {
-      ;
-  }
+export default class TableActionComponent {
+
   title= '';
   columnas: string[]=[];
   nombreColumnas: { [key: string]: string } = {}
@@ -32,4 +31,9 @@ export default class TableComponent implements OnInit {
     this.dataSource = data
   }
 
+  @Output() action: EventEmitter<Accion> = new EventEmitter();
+
+  onAction(accion: string, row?: any) {
+    this.action.emit({ accion: accion, fila: row });
+  }
 }

@@ -57,6 +57,10 @@ export const routes: Routes = [
                 loadComponent: ()=> import("./business/components/opciones-administrador/opciones-administrador.component")
             },
             {
+                path: "lista-alumnos/:id",
+                loadComponent: ()=> import("./business/components/detalle-alumno/detalle-alumno.component")
+            },
+            {
                 path:"",
                 redirectTo:'panel-administrador',
                 pathMatch: 'full'

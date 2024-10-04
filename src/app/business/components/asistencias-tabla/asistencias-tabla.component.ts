@@ -13,7 +13,7 @@ import moment from 'moment';
   styleUrl: './asistencias-tabla.component.css'
 })
 export default class AsistenciasTablaComponent {
-  title:string = 'Alumnos';
+  title:string = 'Lista de asistencias';
   columnas:string[]=["fecha","ingreso","salida","nombreAlumno","apellidoAlumno","gradoId", "nombreSeccion"]
   asistencias: Asistencia[] = [];
   filtroFecha: string = "";
