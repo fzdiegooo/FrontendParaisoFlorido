@@ -22,7 +22,7 @@ export default class RegistroAsistenciaComponent implements OnInit, OnDestroy  {
     // Inicializa el escáner QR en el inicio del componente
     this.html5QrCodeScanner = new Html5QrcodeScanner(
       "reader", 
-      { fps: 10, qrbox: 250 }, 
+      { fps: 10, qrbox: 200 }, 
       /* verbose= */ false
     );
 
