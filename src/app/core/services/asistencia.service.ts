@@ -8,7 +8,7 @@ import { environment } from '../../../environment';
   providedIn: 'root'
 })
 export class AsistenciaService {
-  private url= environment.apiUrl+"/api/asistencia"
+  private url= environment.local+"/api/asistencia"
   constructor(private http: HttpClient) { }
 
   getAsistencias(filtroFecha: string = ""):Observable<Asistencia[]>{

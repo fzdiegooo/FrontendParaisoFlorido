@@ -8,7 +8,7 @@ import { environment } from '../../../environment';
   providedIn: 'root'
 })
 export class AlumnosService {
-  private url = environment.apiUrl+'/api/alumnos'
+  private url = environment.local+'/api/alumnos'
   constructor(private httpClient: HttpClient) { }
 
   getAlumnos(filtroGrado: string='',filtroSeccion: string=''):Observable<Alumno[]>{

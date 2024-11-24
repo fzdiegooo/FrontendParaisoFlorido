@@ -8,7 +8,8 @@ import { environment } from '../../../environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private LOGIN_URL = environment.apiUrl+"/api/auth/login";
+  private LOGIN_URL = environment.local+"/api/auth/login";
+  private REGISTER_URL = environment.local+"/api/auth/register";
   private tokenKey = 'authToken';
   constructor(private httpcliente: HttpClient, private router: Router) { }
   
@@ -42,5 +43,12 @@ export class AuthService {
   logout(): void{
     localStorage.removeItem(this.tokenKey);
     this.router.navigate(["/login"])
+  }
+
+  registerPadre(nombre: string, apellido: string, documento:string ,correo:string,rol:string,grado:number,telefono:string,turno:string):Observable<any>{
+    console.log(nombre, apellido, documento, correo, rol, grado, telefono, turno);
+    
+    return this.httpcliente.post<any>(this.REGISTER_URL,{nombre,apellido,documento,correo,rol,grado,telefono,turno})
+
   }
 }

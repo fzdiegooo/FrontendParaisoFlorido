@@ -1,3 +1,5 @@
 export const environment = {
-    apiUrl: "https://backendparaisoflorido-production.up.railway.app"
+    apiUrl: "",
+    local: "http://localhost:3000"
 }
+

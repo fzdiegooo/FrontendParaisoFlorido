@@ -39,6 +39,8 @@ export default class DetalleAlumnoComponent implements OnInit {
   getDetalleAlumno(){
     this.alumnoService.getAlumnosById(this.idAlumno).subscribe(
       (data) => {
+        console.log(data);
+        
         this.dataAlumno = data;
         this.dataAsistencias= data.asistencias;
         console.log(data.asistencias);

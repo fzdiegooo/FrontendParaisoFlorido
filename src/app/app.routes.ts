@@ -57,6 +57,14 @@ export const routes: Routes = [
                 loadComponent: ()=> import("./business/components/opciones-administrador/opciones-administrador.component")
             },
             {
+                path: "interesados-matricula",
+                loadComponent: ()=> import("./business/components/interesados-tabla/interesados-tabla.component")
+            },
+            {
+                path: "crear-alumno",
+                loadComponent: ()=> import("./business/components/crear-alumno/crear-alumno.component")
+            },
+            {
                 path: "lista-alumnos/:id",
                 loadComponent: ()=> import("./business/components/detalle-alumno/detalle-alumno.component")
             },
